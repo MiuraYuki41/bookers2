@@ -1,2 +1,21 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<% @books.each do |book| %>
+
+<p>画像</p>
+  <% if book.image.attached? %>
+    <%= image_tag book.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+
+<% end %>
+
+<h1>New book</h1>
+<%= form_with model: Book.new do |f| %>
+  <li>Title</li>
+  <%= f.text_field :title %>
+	
+  <li>Opinion<li>
+  <%= f.text_area :body %>
+	
+  <li><%= f.submit 'Create Book' %></li>
+<% end %>
