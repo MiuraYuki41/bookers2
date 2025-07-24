@@ -7,6 +7,12 @@ class BooksController < ApplicationController
     @user = current_user
   end
 
+  def create
+     @book = Book.new(book_params)
+     @book.save
+     redirect_to book_path(current_user.id)
+  end
+
   def show
   end
 

@@ -69,10 +69,10 @@
             <tr>
               <td>
               <% if book.user.image.attached? %>
-              <%= image_tag book.user.image, size: "100x100" %>
-            <% else %>
-              <%= image_tag 'no_image', size: "100x100" %>
-            <% end %>
+                <%= image_tag book.user.image, size: "100x100" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "100x100" %>
+              <% end %>
               </td>
               <td>
                 <span><%= link_to book.title , book_path(book.id) %></span>
