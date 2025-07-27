@@ -7,9 +7,9 @@
     <div class = 'col-md-8 offset-md-1'>
        <h2>Book detail</h2>
 
-        <table class="table">
-          <tbody>
-            <% @book = Book.find(params[:id]) do %>
+      <table class="table">
+        <tbody>
+          <% @book = Book.find(params[:id]) do %>
             <tr>
               <td>
                 <%= link_to user_path(@user.id) do %>
@@ -27,15 +27,17 @@
               <td>
                 <%= @book.body %>
               </td>
-              <td>
-                <%= link_to 'Edit' , edit_book_path(@book.id) , class: "btn btn-sm btn-success" %>
-              </td>
-              <td>
-                <%= link_to 'Destroy' , book_path(@book.id) , class: "btn btn-sm btn-danger" , method: :delete, "data-confirm" => "本当に削除しますか？" %>
-              </td>
+                <% if @book.user == current_user %>
+                  <td>
+                    <%= link_to 'Edit' , edit_book_path(@book.id) , class: "btn btn-sm btn-success" %>
+                  </td>
+                  <td>
+                    <%= link_to 'Destroy' , book_path(@book.id) , class: "btn btn-sm btn-danger" , method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                  </td>
+                <% end %>
             </tr>
-            <% end %> 
-          </tbody>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>
