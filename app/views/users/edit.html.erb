@@ -4,6 +4,15 @@
 
       <h2>User info</h2>
 
+      <% if @user.errors.any? %>
+        <%= @user.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <%= form_with model: @user do |f| %>
         <%= f.label :title, 'Name' %>
         <div><%= f.text_field :name , class: "form-control book_title" %></div><br>
